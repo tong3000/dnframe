@@ -1,3 +1,10 @@
+from os.path import dirname
+import sys, pytest
+
+# 加入环境变量
+path = dirname(__file__)
+sys.path.append(path.split("testcases")[0])
+
 import unittest, os, HTMLTestRunner
 from common.util import projjectpath
 
