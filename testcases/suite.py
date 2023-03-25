@@ -1,24 +1,25 @@
-from os.path import dirname
-import sys, pytest
+from os.path import dirname, abspath, split
+import sys
 
-# 加入环境变量
-path = dirname(__file__)
-sys.path.insert(0,path.split("testcases")[0])
+path = abspath(dirname(__file__))
+rootPath = split(path)[0]
+sys.path.insert(0, rootPath)
+
 
 import unittest, os, HTMLTestRunner
 from common.util import projjectpath
 
-path = os.getcwd()
-print(path)
+# path = os.getcwd()
+# print(path)
 
 
 def allcase():
     discover = unittest.defaultTestLoader.discover(path, 'logintest.py', top_level_dir=None)
     return discover
 
+
 if __name__ == '__main__':
-    print(sys.path)
-    # file_name =  projjectpath()+"reports\\"+"dntest.html"
-    # fp = open(file_name, 'wb')
-    # runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title="dntest_report", description="web test")
-    # runner.run(allcase())
+    file_name = projjectpath() + "reports\\" + "dntest.html"
+    fp = open(file_name, 'wb')
+    runner = HTMLTestRunner.HTMLTestRunner(stream=fp, title="dntest_report", description="web test")
+    runner.run(allcase())
