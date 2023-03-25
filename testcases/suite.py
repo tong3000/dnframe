@@ -9,7 +9,7 @@ sys.path.insert(0, rootPath)
 import unittest, os, HTMLTestRunner
 from common.util import projjectpath
 
-path = os.getcwd()
+# path = os.getcwd()
 # print(path)
 
 
